@@ -8,6 +8,15 @@ class FlutterPicker {
   static const MethodChannel _channel =
       const MethodChannel('flutter_picker');
 
+  static Future<List<MediaFile>> getAll() async {
+    final String json = await _channel.invokeMethod(
+        "getAll"
+    );
+    final encoded = jsonDecode(json);
+    return encoded.map<MediaFile>((mediaFile) => MediaFile.fromJson(mediaFile)).toList();
+  }
+
+
   static Future<List<MediaFile>> getImage() async {
     final String json = await _channel.invokeMethod(
         "getImage"

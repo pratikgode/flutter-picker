@@ -85,6 +85,23 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: <Widget>[
               RaisedButton(
+                  child: const Text("Show All Media"),
+                  onPressed: () {
+                    /*_checkPermission().then((granted) {
+                  if (!granted) return;
+                  getMedia();
+                });*/
+                    // getMedia();
+
+                    FlutterPicker.getAll().then((mediaFiles) {
+                      //print(mediaFiles);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PickerWidget(mediaFiles)),
+                      );
+                    });
+               }),
+              RaisedButton(
                   child: const Text("Show Image Media"),
                   onPressed: () {
                     /*_checkPermission().then((granted) {
