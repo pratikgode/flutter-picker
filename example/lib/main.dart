@@ -82,24 +82,46 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: RaisedButton(
-              child: const Text("Get Media"),
-              onPressed: () {
-                /*_checkPermission().then((granted) {
+          child: Column(
+            children: <Widget>[
+              RaisedButton(
+                  child: const Text("Show Image Media"),
+                  onPressed: () {
+                    /*_checkPermission().then((granted) {
                   if (!granted) return;
                   getMedia();
                 });*/
-               // getMedia();
+                    // getMedia();
 
-                FlutterPicker.getImage().then((mediaFiles) {
-                  print(mediaFiles);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PickerWidget(mediaFiles)),
-                  );
-                });
+                    FlutterPicker.getImage().then((mediaFiles) {
+                      //print(mediaFiles);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PickerWidget(mediaFiles)),
+                      );
+                    });
 
-              }),
+                  }),
+              RaisedButton(
+                  child: const Text("Show Video Media"),
+                  onPressed: () {
+                    /*_checkPermission().then((granted) {
+                  if (!granted) return;
+                  getMedia();
+                });*/
+                    // getMedia();
+
+                    FlutterPicker.getVideo().then((mediaFiles) {
+                      //print(mediaFiles);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PickerWidget(mediaFiles)),
+                      );
+                    });
+
+                  })
+            ],
+          ),
 
         ),
       );
