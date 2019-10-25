@@ -21,6 +21,9 @@ class MyApp extends StatefulWidget {
 
 
 class _MyAppState extends State<MyApp> {
+
+  String selectText = "";
+
   @override
   void initState() {
     super.initState();
@@ -78,52 +81,62 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              RaisedButton(
-                  child: const Text("Show Image Media"),
-                  onPressed: () {
-                    /*_checkPermission().then((granted) {
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+                child: const Text("Show Image Media"),
+                onPressed: () {
+                  /*_checkPermission().then((granted) {
                   if (!granted) return;
                   getMedia();
                 });*/
-                    // getMedia();
+                  // getMedia();
 
-                    FlutterPicker.getImage().then((mediaFiles) {
-                      //print(mediaFiles);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PickerWidget(mediaFiles)),
-                      );
-                    });
-
-                  }),
-              RaisedButton(
-                  child: const Text("Show Video Media"),
-                  onPressed: () {
-                    /*_checkPermission().then((granted) {
+                  FlutterPicker.getImage().then((mediaFiles) {
+                    //print(mediaFiles);
+                    _awaitReturnValueFromSecondScreen(context, mediaFiles);
+                  });
+                }),
+            RaisedButton(
+                child: const Text("Show Video Media"),
+                onPressed: () {
+                  /*_checkPermission().then((granted) {
                   if (!granted) return;
                   getMedia();
                 });*/
-                    // getMedia();
+                  // getMedia();
 
-                    FlutterPicker.getVideo().then((mediaFiles) {
-                      //print(mediaFiles);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PickerWidget(mediaFiles)),
-                      );
-                    });
-
-                  })
-            ],
-          ),
-
+                  FlutterPicker.getVideo().then((mediaFiles) {
+                    //print(mediaFiles);
+                    _awaitReturnValueFromSecondScreen(context, mediaFiles);
+                  });
+                }),
+            Text("$selectText")
+          ],
         ),
-      );
+
+      ),
+    );
+  }
+
+  void _awaitReturnValueFromSecondScreen(BuildContext context,
+      List<MediaFile> mediaFiles) async {
+    // start the SecondScreen and wait for it to finish with a result
+    Set<MediaFile>result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PickerWidget(mediaFiles),
+        ));
+
+    // after the SecondScreen result comes back update the Text widget with it
+
+    setState(() {
+      int size = result.length;
+      selectText = "Selected Media Size $size";
+    });
   }
 }

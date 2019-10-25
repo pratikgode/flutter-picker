@@ -83,7 +83,7 @@ class PickerWidgetState extends State<PickerWidget> {
   }
 
   onDone(Set<MediaFile> selectedFiles) {
-    Navigator.pop(context);
+    Navigator.pop(context,selectedFiles);
   }
 
   onCancel() {
