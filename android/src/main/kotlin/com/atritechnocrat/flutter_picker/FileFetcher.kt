@@ -91,18 +91,17 @@ class FileFetcher {
 
     private fun getAlls(context: Context):  List<MediaFile> {
       val list: ArrayList<MediaFile> = ArrayList()
-      context.contentResolver.query(
-              MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-              videoMediaColumns
-              , null,
-              null,
-              "${MediaStore.Video.Media._ID} DESC")?.use { cursor ->
 
-        while (cursor.moveToNext()) {
-          val mediaFile = getMediaFile(cursor, MediaFile.MediaType.VIDEO)
-          list.add(mediaFile);
-        }
+      var imagelist : List<MediaFile> = getVideos(context);
+      var videoList : List<MediaFile> = getImages(context);
+
+      list.addAll(imagelist);
+      list.addAll(videoList);
+
+      list.sortByDescending { file ->
+        file.dateAdded
       }
+
       return list;
     }
 

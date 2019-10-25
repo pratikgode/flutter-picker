@@ -29,7 +29,7 @@ class PickerWidgetState extends State<PickerWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Second Route"),
+          title: Text("Media Picker"),
         ),
         body: Center(
           child: _buildWidget(),
