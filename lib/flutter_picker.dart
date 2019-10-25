@@ -52,4 +52,17 @@ class FlutterPicker {
     );
     return path;
   }
+
+  static int orientationToQuarterTurns(int orientationInDegrees) {
+    switch (orientationInDegrees) {
+      case 90:
+        return 1;
+      case 180:
+        return 2;
+      case 270:
+        return 3;
+      default:
+        return 0;
+    }
+  }
 }

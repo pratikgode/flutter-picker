@@ -5,12 +5,20 @@ import 'dart:async';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:flutter_picker/data/MediaFile.dart';
 
-void main() => runApp(MyApp());
+import 'PickerWidget.dart';
+
+
+void main() => runApp(MaterialApp(
+  title: "App",
+  home: MyApp(),
+));
+
 
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
+
 
 class _MyAppState extends State<MyApp> {
   @override
@@ -69,8 +77,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
@@ -82,11 +89,19 @@ class _MyAppState extends State<MyApp> {
                   if (!granted) return;
                   getMedia();
                 });*/
-                getMedia();
+               // getMedia();
+
+                FlutterPicker.getImage().then((mediaFiles) {
+                  print(mediaFiles);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PickerWidget(mediaFiles)),
+                  );
+                });
+
               }),
 
         ),
-      ),
-    );
+      );
   }
 }
