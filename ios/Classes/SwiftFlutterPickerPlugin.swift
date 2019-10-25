@@ -11,6 +11,13 @@ public class SwiftFlutterPickerPlugin: NSObject, FlutterPlugin {
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
+                case "getAll":
+                    DispatchQueue(label: "getAll").async {
+                        let imagesVideos = FileFetcher.getAllPhotosVideos()
+                        let encodedData = try? JSONEncoder().encode(imagesVideos)
+                        let json = String(data: encodedData!, encoding: .utf8)!
+                        result(json)
+                    }
                 case "getImage":
                     DispatchQueue(label: "getImage").async {
                         let photos = FileFetcher.getImage()

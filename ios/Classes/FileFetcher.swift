@@ -86,6 +86,26 @@ class FileFetcher {
         print("GET VIDEOS: ", files)
         return files
     }
+    
+    //MARK: GET ALL PHOTOS AND VIDEOS
+    static func getAllPhotosVideos() -> [MediaFile] {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",ascending: false)]
+        fetchOptions.predicate = NSPredicate(format: "mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+        let assets = PHAsset.fetchAssets(with: fetchOptions)
+        var files = [MediaFile]()
+        
+        assets.enumerateObjects{asset, index, info in
+            if let mediaFile = getMediaFile(for: asset, loadPath: true, generateThumbnailIfNotFound: false) {
+                files.append(mediaFile)
+            } else {
+                print("File path not found for an item in \(String(describing: asset))")
+            }
+        }
+        
+        return files
+    }
+    
         
     static func getThumbnail(for fileId: String, type: MediaType) -> String? {
         let cachePath = getCachePath(for: fileId)
