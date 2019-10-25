@@ -87,6 +87,11 @@ class FlutterPickerPlugin(private val context: Context) : MethodCallHandler {
         result.success(video.toString())
       }
 
+      call.method == "getAll" -> {
+        val video = FileFetcher.getAll(context)
+        result.success(video.toString())
+      }
+
       else -> result.notImplemented()
 
     }
