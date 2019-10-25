@@ -1,6 +1,7 @@
+import 'dart:io';
+//import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter/services.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:flutter_picker/data/MediaFile.dart';
 
@@ -12,47 +13,58 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void initState() {
     super.initState();
-    initPlatformState();
   }
 
+  /*Future<bool> _checkPermission() async {
+    final permissionStorageGroup =
+        Platform.isIOS ? PermissionGroup.photos : PermissionGroup.storage;
+    Map<PermissionGroup, PermissionStatus> res =
+        await PermissionHandler().requestPermissions([
+      permissionStorageGroup,
+    ]);
+    return res[permissionStorageGroup] == PermissionStatus.granted;
+  }*/
+
   // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
+  Future<void> getMedia() async {
+    try {
+      List<MediaFile> imageMediaFileList = await FlutterPicker.getImage();
+      print("imageMediaFileList");
+      print(imageMediaFileList);
 
-    /* try {
-      List<MediaFile> data= await FlutterPicker.getImage();
-      print("getImage");
-      print(data);
+      List<MediaFile> videoMediaFileList = await FlutterPicker.getVideo();
+      print("videoMediaFileList");
+      print(videoMediaFileList);
+
+      MediaFile imageMediaFile1 = await FlutterPicker.getMediaFile(
+          fileId: imageMediaFileList[0].id, type: MediaType.IMAGE);
+      print("imageMediaFile1");
+      print(imageMediaFile1.thumbnailPath);
+
+      MediaFile videoMediaFile1 = await FlutterPicker.getMediaFile(
+          fileId: videoMediaFileList[0].id, type: MediaType.VIDEO);
+      print("videoMediaFile1");
+      print(videoMediaFile1.thumbnailPath);
+
+      if (imageMediaFileList.length > 0) {
+        String imageMediaFile2 = await FlutterPicker.getThumbnail(
+            fileId: imageMediaFileList[0].id, type: MediaType.IMAGE);
+        print("imageMediaFile2");
+        print(imageMediaFile2);
+      }
+
+      if (videoMediaFileList.length > 0) {
+        String videoMediaFile2 = await FlutterPicker.getThumbnail(
+            fileId: videoMediaFileList[0].id, type: MediaType.VIDEO);
+        print("videoMediaFile2");
+        print(videoMediaFile2);
+      }
     } on Exception {
-
-    }*/
-
-   /* try {
-      List<MediaFile> data= await FlutterPicker.getVideo();
-      print("getVideo");
-      print(data);
-    } on Exception {
-
-    }*/
-
-   /*  try {
-      MediaFile data = await FlutterPicker.getMediaFile(fileId: '293990', type: MediaType.IMAGE);
-      print("getMediaFile");
-      print(data.thumbnailPath);
-    } on Exception {
-       print("Exception");
-    }*/
-
-  /*  try {
-      String data = await FlutterPicker.getThumbnail(fileId: '293990', type: MediaType.IMAGE);
-      print("getThumbnail");
-      print(data);
-    } on Exception {
-
-    }*/
+      print("Exception");
+    }
   }
 
   @override
@@ -63,7 +75,16 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('App Running on'),
+          child: RaisedButton(
+              child: const Text("Get Media"),
+              onPressed: () {
+                /*_checkPermission().then((granted) {
+                  if (!granted) return;
+                  getMedia();
+                });*/
+                getMedia();
+              }),
+
         ),
       ),
     );

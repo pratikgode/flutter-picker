@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import Photos
 
 public class SwiftFlutterPickerPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -74,4 +75,3 @@ public class SwiftFlutterPickerPlugin: NSObject, FlutterPlugin {
 
             }
   }
-}

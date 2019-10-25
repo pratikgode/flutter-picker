@@ -19,7 +19,7 @@ class FileFetcher {
             let since1970 = asset.creationDate?.timeIntervalSince1970
             var dateAdded: Int? = nil
             if since1970 != nil {
-                dateAdded = Int(since1970getThumbnail!)
+                dateAdded = Int(since1970!)
             }
             mediaFile = MediaFile.init(
                 id: asset.localIdentifier,
@@ -207,7 +207,8 @@ class FileFetcher {
         var saved = false
         PHCachingImageManager.default().requestImage(for: asset, targetSize: imageSize, contentMode: imageContentMode, options: options) { (image, info) in
             do {
-                try image!.pngData()?.write(to: destination)
+//                try image!.pngData()?.write(to: destination)
+                try UIImagePNGRepresentation(image!)?.write(to: destination)
                 saved = true
             } catch (let error) {
                 print(error)
