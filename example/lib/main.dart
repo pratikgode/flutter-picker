@@ -40,35 +40,27 @@ class _MyAppState extends State<MyApp> {
   Future<void> getMedia() async {
     try {
       List<MediaFile> imageMediaFileList = await FlutterMediaPicker.getImage();
-      print("imageMediaFileList");
-      print(imageMediaFileList);
 
       List<MediaFile> videoMediaFileList = await FlutterMediaPicker.getVideo();
-      print("videoMediaFileList");
-      print(videoMediaFileList);
-
-      MediaFile imageMediaFile1 = await FlutterMediaPicker.getMediaFile(
-          fileId: imageMediaFileList[0].id, type: MediaType.IMAGE);
-      print("imageMediaFile1");
-      print(imageMediaFile1.thumbnailPath);
-
-      MediaFile videoMediaFile1 = await FlutterMediaPicker.getMediaFile(
-          fileId: videoMediaFileList[0].id, type: MediaType.VIDEO);
-      print("videoMediaFile1");
-      print(videoMediaFile1.thumbnailPath);
 
       if (imageMediaFileList.length > 0) {
-        String imageMediaFile2 = await FlutterMediaPicker.getThumbnail(
+        MediaFile imageMedia = await FlutterMediaPicker.getMediaFile(
             fileId: imageMediaFileList[0].id, type: MediaType.IMAGE);
-        print("imageMediaFile2");
-        print(imageMediaFile2);
       }
 
       if (videoMediaFileList.length > 0) {
-        String videoMediaFile2 = await FlutterMediaPicker.getThumbnail(
+        MediaFile videoMedia = await FlutterMediaPicker.getMediaFile(
             fileId: videoMediaFileList[0].id, type: MediaType.VIDEO);
-        print("videoMediaFile2");
-        print(videoMediaFile2);
+      }
+
+      if (imageMediaFileList.length > 0) {
+        String imageMedia = await FlutterMediaPicker.getThumbnail(
+            fileId: imageMediaFileList[0].id, type: MediaType.IMAGE);
+      }
+
+      if (videoMediaFileList.length > 0) {
+        String videoMedia = await FlutterMediaPicker.getThumbnail(
+            fileId: videoMediaFileList[0].id, type: MediaType.VIDEO);
       }
     } on Exception {
       print("Exception");
@@ -126,10 +118,9 @@ class _MyAppState extends State<MyApp> {
 
     // after the SecondScreen result comes back update the Text widget with it
 
-    if(result == null)
-      {
-        return;
-      }
+    if (result == null) {
+      return;
+    }
 
     setState(() {
       int size = result.length;
