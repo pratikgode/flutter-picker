@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_media_picker/data/MediaFile.dart';
+import 'package:flutter_multimedia_picker/data/MediaFile.dart';
 
 class MultiSelectorModel extends ChangeNotifier {
   Set<MediaFile> _selectedItems = Set();

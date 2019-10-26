@@ -1,6 +1,6 @@
-# flutter_picker_example
+# flutter_multimedia_picker_example
 
-Demonstrates how to use the flutter_picker plugin.
+Demonstrates how to use the flutter_multimedia_picker_example plugin.
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-package com.atritechnocrat.flutter_media_picker
+package com.atritechnocrat.flutter_multimedia_picker
 
 import android.content.Context
 import android.os.Handler
@@ -10,12 +10,12 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class FlutterMediaPickerPlugin(private val context: Context) : MethodCallHandler {
+class FlutterMultiMediaPickerPlugin(private val context: Context) : MethodCallHandler {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "fullter_media_picker")
-      channel.setMethodCallHandler(FlutterMediaPickerPlugin(registrar.context()))
+      val channel = MethodChannel(registrar.messenger(), "fullter_multimedia_picker")
+      channel.setMethodCallHandler(FlutterMultiMediaPickerPlugin(registrar.context()))
     }
   }
 

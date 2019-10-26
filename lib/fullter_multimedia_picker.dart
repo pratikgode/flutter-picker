@@ -4,9 +4,9 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'data/MediaFile.dart';
 
-class FlutterMediaPicker {
+class FlutterMultiMediaPicker {
   static const MethodChannel _channel =
-      const MethodChannel('fullter_media_picker');
+      const MethodChannel('fullter_multimedia_picker');
 
   static Future<List<MediaFile>> getAll() async {
     final String json = await _channel.invokeMethod(

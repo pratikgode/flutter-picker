@@ -1,4 +1,4 @@
-group 'com.atritechnocrat.flutter_media_picker'
+group 'com.atritechnocrat.flutter_multimedia_picker'
 version '1.0-SNAPSHOT'
 
 buildscript {

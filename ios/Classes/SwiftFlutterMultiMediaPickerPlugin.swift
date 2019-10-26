@@ -2,10 +2,10 @@ import Flutter
 import UIKit
 import Photos
 
-public class SwiftFlutterMediaPickerPlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterMultiMediaPickerPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "fullter_media_picker", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterMediaPickerPlugin()
+    let channel = FlutterMethodChannel(name: "fullter_multimedia_picker", binaryMessenger: registrar.messenger())
+    let instance = SwiftFlutterMultiMediaPickerPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
