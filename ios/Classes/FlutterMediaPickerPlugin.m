@@ -1,5 +1,5 @@
-#import "FlutterPickerPlugin.h"
-#import <flutter_picker/flutter_picker-Swift.h>
+#import "FlutterMediaPickerPlugin.h"
+#import <flutter_media_picker/flutter_media_picker-Swift.h>
 
 @implementation FlutterMediaPickerPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {

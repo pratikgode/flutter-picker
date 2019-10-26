@@ -133,7 +133,6 @@
 				DB230AFEECDA48DDE0EA5186 /* Pods-Runner.release.xcconfig */,
 				25FAD3C931CF4F9DD2184016 /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -386,7 +385,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.atritechnocrat.flutterPickerExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atritechnocrat.flutterMediaPickerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -520,7 +519,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.atritechnocrat.flutterPickerExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atritechnocrat.flutterMediaPickerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -547,7 +546,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.atritechnocrat.flutterPickerExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atritechnocrat.flutterMediaPickerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
