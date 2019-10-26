@@ -43,6 +43,8 @@ class _MyAppState extends State<MyApp> {
 
       List<MediaFile> videoMediaFileList = await FlutterMultiMediaPicker.getVideo();
 
+      List<MediaFile> allMediaFileList = await FlutterMultiMediaPicker.getAll();
+
       if (imageMediaFileList.length > 0) {
         MediaFile imageMedia = await FlutterMultiMediaPicker.getMediaFile(
             fileId: imageMediaFileList[0].id, type: MediaType.IMAGE);

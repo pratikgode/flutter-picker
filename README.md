@@ -11,11 +11,13 @@ flutter_multimedia_picker: ^1.0.0
 
 ## Example
 ```
-Future<void> getMedia() async {
+  Future<void> getMedia() async {
     try {
       List<MediaFile> imageMediaFileList = await FlutterMultiMediaPicker.getImage();
 
       List<MediaFile> videoMediaFileList = await FlutterMultiMediaPicker.getVideo();
+
+      List<MediaFile> allMediaFileList = await FlutterMultiMediaPicker.getAll();
 
       if (imageMediaFileList.length > 0) {
         MediaFile imageMedia = await FlutterMultiMediaPicker.getMediaFile(
