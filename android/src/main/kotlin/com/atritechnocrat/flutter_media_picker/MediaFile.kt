@@ -1,4 +1,4 @@
-package com.atritechnocrat.flutter_picker
+package com.atritechnocrat.flutter_media_picker
 
 import org.json.JSONObject
 

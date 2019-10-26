@@ -1,12 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
 import 'data/MediaFile.dart';
 
-class FlutterPicker {
+class FlutterMediaPicker {
   static const MethodChannel _channel =
-      const MethodChannel('flutter_picker');
+      const MethodChannel('fullter_media_picker');
 
   static Future<List<MediaFile>> getAll() async {
     final String json = await _channel.invokeMethod(

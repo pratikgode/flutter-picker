@@ -3,6 +3,6 @@
 
 @implementation FlutterPickerPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftFlutterPickerPlugin registerWithRegistrar:registrar];
+  [SwiftFlutterMediaPickerPlugin registerWithRegistrar:registrar];
 }
 @end

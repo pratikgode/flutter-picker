@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'gallery_widget_item.dart';
-import 'package:flutter_picker/data/MediaFile.dart';
+import 'package:flutter_media_picker/data/MediaFile.dart';
+
+import 'GalleryWidgetItem.dart';
 
 class GalleryWidget extends StatefulWidget {
   final List<MediaFile> mediaFiles;

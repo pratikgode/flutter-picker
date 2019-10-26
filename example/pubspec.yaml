@@ -19,7 +19,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_picker:
+  flutter_media_picker:
     path: ../
 
 # For information on the generic Dart part of this file, see the

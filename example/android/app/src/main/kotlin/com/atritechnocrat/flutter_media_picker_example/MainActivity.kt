@@ -1,4 +1,4 @@
-package com.atritechnocrat.flutter_picker_example
+package com.atritechnocrat.flutter_media_picker_example
 
 import android.os.Bundle
 

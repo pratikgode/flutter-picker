@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_picker/data/MediaFile.dart';
+import 'package:flutter_media_picker/data/MediaFile.dart';
 import 'MultiSelectorModel.dart';
-import 'package:flutter_picker/flutter_picker.dart';
+import 'package:flutter_media_picker/fullter_media_picker.dart';
 import 'package:provider/provider.dart';
 
 class GalleryWidgetItem extends StatefulWidget {
@@ -62,7 +62,7 @@ class GalleryWidgetItemState extends State<GalleryWidgetItem> {
               ? RotatedBox(
             quarterTurns: Platform.isIOS
                 ? 0
-                : FlutterPicker.orientationToQuarterTurns(
+                : FlutterMediaPicker.orientationToQuarterTurns(
                 widget.mediaFile.orientation),
             child: Image.file(
               File(widget.mediaFile.thumbnailPath),
@@ -70,7 +70,7 @@ class GalleryWidgetItemState extends State<GalleryWidgetItem> {
             ),
           )
               : FutureBuilder(
-              future: FlutterPicker.getThumbnail(
+              future: FlutterMediaPicker.getThumbnail(
                 fileId: widget.mediaFile.id,
                 type: widget.mediaFile.type,
               ),
@@ -82,7 +82,7 @@ class GalleryWidgetItemState extends State<GalleryWidgetItem> {
                   return RotatedBox(
                     quarterTurns: Platform.isIOS
                         ? 0 // iOS thumbnails have correct orientation
-                        : FlutterPicker.orientationToQuarterTurns(
+                        : FlutterMediaPicker.orientationToQuarterTurns(
                         widget.mediaFile.orientation),
                     child: Image.file(
                       File(thumbnail),

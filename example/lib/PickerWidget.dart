@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_picker/data/MediaFile.dart';
+import 'package:flutter_media_picker/data/MediaFile.dart';
 import 'GalleryWidget.dart';
 import 'MultiSelectorModel.dart';
-import 'package:flutter_picker/flutter_picker.dart';
-
+import 'package:flutter_media_picker/fullter_media_picker.dart';
 class PickerWidget extends StatefulWidget {
 
   List<MediaFile> mediaFiles;
