@@ -9,6 +9,19 @@ First, add `flutter_multimedia_picker` as a [dependency in your pubspec.yaml fil
 flutter_multimedia_picker: ^1.0.0
 ```
 
+## Usage
+You need user permission to access media.
+  * ##### For IOS: You must to modify the Info.plist file in Runner project
+  ```
+ <key>NSPhotoLibraryUsageDescription</key>
+ <string>App need your agree, can visit your meida</string>
+  ```
+
+  * ##### For Android: You must Add permission to `AndroidManifest.xml`
+  ``` 
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />` to your `AndroidManifest.xml`
+  ```
+
 ## Example
 ```
   Future<void> getMedia() async {
@@ -44,3 +57,6 @@ flutter_multimedia_picker: ^1.0.0
   }
 
 ```
+
+## Credits
+Thanks to Kasem SAEED for his awesome [media_picker_builder](https://github.com/KasemJaffer/media_picker_builder) library. It's the core of this library.

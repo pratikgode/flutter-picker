@@ -31,13 +31,12 @@ class MediaFile {
   String mimeType;
   MediaType type;
 
-  MediaFile(
-      {this.id,
-        this.dateAdded,
-        this.path,
-        this.thumbnailPath,
-        this.orientation,
-        this.type});
+  MediaFile({this.id,
+    this.dateAdded,
+    this.path,
+    this.thumbnailPath,
+    this.orientation,
+    this.type});
 
   MediaFile.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -52,7 +51,8 @@ class MediaFile {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is MediaFile && runtimeType == other.runtimeType && id == other.id;
+          other is MediaFile && runtimeType == other.runtimeType &&
+              id == other.id;
 
   @override
   int get hashCode => id.hashCode;

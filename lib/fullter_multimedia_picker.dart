@@ -6,14 +6,15 @@ import 'data/MediaFile.dart';
 
 class FlutterMultiMediaPicker {
   static const MethodChannel _channel =
-      const MethodChannel('fullter_multimedia_picker');
+  const MethodChannel('fullter_multimedia_picker');
 
   static Future<List<MediaFile>> getAll() async {
     final String json = await _channel.invokeMethod(
         "getAll"
     );
     final encoded = jsonDecode(json);
-    return encoded.map<MediaFile>((mediaFile) => MediaFile.fromJson(mediaFile)).toList();
+    return encoded.map<MediaFile>((mediaFile) => MediaFile.fromJson(mediaFile))
+        .toList();
   }
 
 
@@ -22,7 +23,8 @@ class FlutterMultiMediaPicker {
         "getImage"
     );
     final encoded = jsonDecode(json);
-    return encoded.map<MediaFile>((mediaFile) => MediaFile.fromJson(mediaFile)).toList();
+    return encoded.map<MediaFile>((mediaFile) => MediaFile.fromJson(mediaFile))
+        .toList();
   }
 
   static Future<List<MediaFile>> getVideo() async {
@@ -30,7 +32,8 @@ class FlutterMultiMediaPicker {
         "getVideo"
     );
     final encoded = jsonDecode(json);
-    return encoded.map<MediaFile>((mediaFile) => MediaFile.fromJson(mediaFile)).toList();
+    return encoded.map<MediaFile>((mediaFile) => MediaFile.fromJson(mediaFile))
+        .toList();
   }
 
   static Future<MediaFile> getMediaFile({
