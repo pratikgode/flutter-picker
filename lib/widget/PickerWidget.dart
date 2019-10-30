@@ -3,9 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_multimedia_picker/data/MediaFile.dart';
 import 'GalleryWidget.dart';
 import 'MultiSelectorModel.dart';
-import 'package:flutter_multimedia_picker/fullter_multimedia_picker.dart';
-class PickerWidget extends StatefulWidget {
 
+class PickerWidget extends StatefulWidget {
   List<MediaFile> mediaFiles;
 
   PickerWidget(this.mediaFiles);
@@ -15,9 +14,7 @@ class PickerWidget extends StatefulWidget {
 }
 
 class PickerWidgetState extends State<PickerWidget> {
-
   MultiSelectorModel _selector = MultiSelectorModel();
-
 
   @override
   void initState() {
@@ -82,7 +79,7 @@ class PickerWidgetState extends State<PickerWidget> {
   }
 
   onDone(Set<MediaFile> selectedFiles) {
-    Navigator.pop(context,selectedFiles);
+    Navigator.pop(context, selectedFiles);
   }
 
   onCancel() {

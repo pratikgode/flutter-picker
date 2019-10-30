@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_multimedia_picker/fullter_multimedia_picker.dart';
 import 'package:flutter_multimedia_picker/data/MediaFile.dart';
-
-import 'PickerWidget.dart';
+import 'package:flutter_multimedia_picker/widget/PickerWidget.dart';
 
 void main() => runApp(MaterialApp(
       title: "App",
@@ -39,9 +38,11 @@ class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> getMedia() async {
     try {
-      List<MediaFile> imageMediaFileList = await FlutterMultiMediaPicker.getImage();
+      List<MediaFile> imageMediaFileList =
+          await FlutterMultiMediaPicker.getImage();
 
-      List<MediaFile> videoMediaFileList = await FlutterMultiMediaPicker.getVideo();
+      List<MediaFile> videoMediaFileList =
+          await FlutterMultiMediaPicker.getVideo();
 
       List<MediaFile> allMediaFileList = await FlutterMultiMediaPicker.getAll();
 

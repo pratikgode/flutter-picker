@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_multimedia_picker/data/MediaFile.dart';
 
@@ -20,16 +19,16 @@ class GalleryWidgetState extends State<GalleryWidget> {
       child: widget.mediaFiles.isEmpty
           ? Center(child: Text("Empty Folder"))
           : GridView.builder(
-          padding: EdgeInsets.all(0),
-          itemCount: widget.mediaFiles.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            mainAxisSpacing: 2,
-            crossAxisSpacing: 2,
-          ),
-          itemBuilder: (BuildContext context, int index) {
-            return GalleryWidgetItem(mediaFile: widget.mediaFiles[index]);
-          }),
+              padding: EdgeInsets.all(0),
+              itemCount: widget.mediaFiles.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                mainAxisSpacing: 2,
+                crossAxisSpacing: 2,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return GalleryWidgetItem(mediaFile: widget.mediaFiles[index]);
+              }),
     );
   }
 }

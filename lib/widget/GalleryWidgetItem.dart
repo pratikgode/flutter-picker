@@ -45,10 +45,10 @@ class GalleryWidgetItemState extends State<GalleryWidgetItem> {
               ),
               selector.isSelected(widget.mediaFile)
                   ? Positioned(
-                right: 10,
-                bottom: 10,
-                child: blueCheckCircle,
-              )
+                      right: 10,
+                      bottom: 10,
+                      child: blueCheckCircle,
+                    )
                   : const SizedBox(),
             ],
           ),
@@ -60,44 +60,44 @@ class GalleryWidgetItemState extends State<GalleryWidgetItem> {
         children: [
           widget.mediaFile.thumbnailPath != null
               ? RotatedBox(
-            quarterTurns: Platform.isIOS
-                ? 0
-                : FlutterMultiMediaPicker.orientationToQuarterTurns(
-                widget.mediaFile.orientation),
-            child: Image.file(
-              File(widget.mediaFile.thumbnailPath),
-              fit: BoxFit.cover,
-            ),
-          )
+                  quarterTurns: Platform.isIOS
+                      ? 0
+                      : FlutterMultiMediaPicker.orientationToQuarterTurns(
+                          widget.mediaFile.orientation),
+                  child: Image.file(
+                    File(widget.mediaFile.thumbnailPath),
+                    fit: BoxFit.cover,
+                  ),
+                )
               : FutureBuilder(
-              future: FlutterMultiMediaPicker.getThumbnail(
-                fileId: widget.mediaFile.id,
-                type: widget.mediaFile.type,
-              ),
-              builder:
-                  (BuildContext context, AsyncSnapshot<String> snapshot) {
-                if (snapshot.hasData) {
-                  var thumbnail = snapshot.data;
-                  widget.mediaFile.thumbnailPath = thumbnail;
-                  return RotatedBox(
-                    quarterTurns: Platform.isIOS
-                        ? 0 // iOS thumbnails have correct orientation
-                        : FlutterMultiMediaPicker.orientationToQuarterTurns(
-                        widget.mediaFile.orientation),
-                    child: Image.file(
-                      File(thumbnail),
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                } else if (snapshot.hasError) {
-                  return Icon(Icons.error, color: Colors.red, size: 24);
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
+                  future: FlutterMultiMediaPicker.getThumbnail(
+                    fileId: widget.mediaFile.id,
+                    type: widget.mediaFile.type,
+                  ),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.hasData) {
+                      var thumbnail = snapshot.data;
+                      widget.mediaFile.thumbnailPath = thumbnail;
+                      return RotatedBox(
+                        quarterTurns: Platform.isIOS
+                            ? 0 // iOS thumbnails have correct orientation
+                            : FlutterMultiMediaPicker.orientationToQuarterTurns(
+                                widget.mediaFile.orientation),
+                        child: Image.file(
+                          File(thumbnail),
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Icon(Icons.error, color: Colors.red, size: 24);
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  }),
           widget.mediaFile.type == MediaType.VIDEO
               ? Icon(Icons.play_circle_filled, color: Colors.white, size: 24)
               : const SizedBox()
