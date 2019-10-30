@@ -6,7 +6,8 @@ import 'package:flutter_multimedia_picker/data/MediaFile.dart';
 import 'package:flutter_multimedia_picker/widget/PickerWidget.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-void main() => runApp(MaterialApp(
+void main() =>
+    runApp(MaterialApp(
       title: "App",
       home: MyApp(),
     ));
@@ -30,9 +31,9 @@ class _MyAppState extends State<MyApp> {
 
   Future<bool> _checkPermission() async {
     final permissionStorageGroup =
-        Platform.isIOS ? PermissionGroup.photos : PermissionGroup.storage;
+    Platform.isIOS ? PermissionGroup.photos : PermissionGroup.storage;
     Map<PermissionGroup, PermissionStatus> res =
-        await PermissionHandler().requestPermissions([
+    await PermissionHandler().requestPermissions([
       permissionStorageGroup,
     ]);
     return res[permissionStorageGroup] == PermissionStatus.granted;
@@ -42,10 +43,10 @@ class _MyAppState extends State<MyApp> {
   Future<void> getMedia() async {
     try {
       List<MediaFile> imageMediaFileList =
-          await FlutterMultiMediaPicker.getImage();
+      await FlutterMultiMediaPicker.getImage();
 
       List<MediaFile> videoMediaFileList =
-          await FlutterMultiMediaPicker.getVideo();
+      await FlutterMultiMediaPicker.getVideo();
 
       List<MediaFile> allMediaFileList = await FlutterMultiMediaPicker.getAll();
 
@@ -113,8 +114,8 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  void _awaitReturnValueFromSecondScreen(
-      BuildContext context, List<MediaFile> mediaFiles) async {
+  void _awaitReturnValueFromSecondScreen(BuildContext context,
+      List<MediaFile> mediaFiles) async {
     // start the SecondScreen and wait for it to finish with a result
     Set<MediaFile> result = await Navigator.push(
         context,
@@ -155,7 +156,7 @@ class _PickerScreenState extends State<PickerScreen> {
           title: Text("Media Picker"),
         ),
         body: Center(
-          child: PickerWidget(widget.mediaFiles,onDone,onCancel),
+          child: PickerWidget(widget.mediaFiles, onDone, onCancel),
         ));
   }
 

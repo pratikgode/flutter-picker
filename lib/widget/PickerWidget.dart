@@ -7,7 +7,7 @@ import 'MultiSelectorModel.dart';
 class PickerWidget extends StatefulWidget {
   List<MediaFile> mediaFiles;
 
-  PickerWidget(this.mediaFiles, this.onDone,this.onCancel);
+  PickerWidget(this.mediaFiles, this.onDone, this.onCancel);
 
   final Function(Set<MediaFile> selectedFiles) onDone;
   final Function() onCancel;
