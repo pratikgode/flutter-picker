@@ -1,11 +1,10 @@
 import 'dart:io';
-
-//import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_multimedia_picker/fullter_multimedia_picker.dart';
 import 'package:flutter_multimedia_picker/data/MediaFile.dart';
 import 'package:flutter_multimedia_picker/widget/PickerWidget.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MaterialApp(
       title: "App",
@@ -23,9 +22,13 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
+    _checkPermission().then((granted) {
+      if (!granted) return;
+    });
   }
 
-  /*Future<bool> _checkPermission() async {
+  Future<bool> _checkPermission() async {
     final permissionStorageGroup =
         Platform.isIOS ? PermissionGroup.photos : PermissionGroup.storage;
     Map<PermissionGroup, PermissionStatus> res =
@@ -33,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       permissionStorageGroup,
     ]);
     return res[permissionStorageGroup] == PermissionStatus.granted;
-  }*/
+  }
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> getMedia() async {
@@ -116,7 +119,7 @@ class _MyAppState extends State<MyApp> {
     Set<MediaFile> result = await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PickerWidget(mediaFiles),
+          builder: (context) => PickerScreen(mediaFiles),
         ));
 
     // after the SecondScreen result comes back update the Text widget with it
@@ -130,4 +133,38 @@ class _MyAppState extends State<MyApp> {
       selectText = "Selected Media Size $size";
     });
   }
+}
+
+
+class PickerScreen extends StatefulWidget {
+
+  List<MediaFile> mediaFiles;
+
+  PickerScreen(this.mediaFiles);
+
+  @override
+  _PickerScreenState createState() => _PickerScreenState();
+}
+
+class _PickerScreenState extends State<PickerScreen> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Media Picker"),
+        ),
+        body: Center(
+          child: PickerWidget(widget.mediaFiles,onDone,onCancel),
+        ));
+  }
+
+  onDone(Set<MediaFile> selectedFiles) {
+    Navigator.pop(context, selectedFiles);
+  }
+
+  onCancel() {
+    Navigator.pop(context);
+  }
+
 }

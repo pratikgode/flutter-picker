@@ -7,7 +7,10 @@ import 'MultiSelectorModel.dart';
 class PickerWidget extends StatefulWidget {
   List<MediaFile> mediaFiles;
 
-  PickerWidget(this.mediaFiles);
+  PickerWidget(this.mediaFiles, this.onDone,this.onCancel);
+
+  final Function(Set<MediaFile> selectedFiles) onDone;
+  final Function() onCancel;
 
   @override
   State<StatefulWidget> createState() => PickerWidgetState();
@@ -23,13 +26,7 @@ class PickerWidgetState extends State<PickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Media Picker"),
-        ),
-        body: Center(
-          child: _buildWidget(),
-        ));
+    return _buildWidget();
   }
 
   _buildWidget() {
@@ -49,7 +46,7 @@ class PickerWidgetState extends State<PickerWidget> {
                   child: FlatButton(
                     padding: EdgeInsets.all(0),
                     textColor: Colors.blue,
-                    onPressed: () => onCancel(),
+                    onPressed: () => widget.onCancel(),
                     child: Text("Cancel"),
                   ),
                 ),
@@ -60,7 +57,7 @@ class PickerWidgetState extends State<PickerWidget> {
                       child: FlatButton(
                         padding: EdgeInsets.all(0),
                         textColor: Colors.blue,
-                        onPressed: () => onDone(_selector.selectedItems),
+                        onPressed: () => widget.onDone(_selector.selectedItems),
                         child: Text(
                           "Done (${selector.selectedItems.length})",
                           overflow: TextOverflow.ellipsis,
@@ -78,11 +75,5 @@ class PickerWidgetState extends State<PickerWidget> {
     );
   }
 
-  onDone(Set<MediaFile> selectedFiles) {
-    Navigator.pop(context, selectedFiles);
-  }
 
-  onCancel() {
-    Navigator.pop(context);
-  }
 }
