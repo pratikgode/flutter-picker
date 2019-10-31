@@ -5,7 +5,7 @@ import 'GalleryWidget.dart';
 import 'MultiSelectorModel.dart';
 
 class PickerWidget extends StatefulWidget {
-  List<MediaFile> mediaFiles;
+  final List<MediaFile> mediaFiles;
 
   PickerWidget(this.mediaFiles, this.onDone, this.onCancel);
 
@@ -74,6 +74,4 @@ class PickerWidgetState extends State<PickerWidget> {
       ),
     );
   }
-
-
 }

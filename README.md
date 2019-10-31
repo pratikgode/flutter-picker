@@ -6,7 +6,7 @@ Flutter plugin to get All Media.It also allows you to select both images and vid
 First, add `flutter_multimedia_picker` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
 ```
-flutter_multimedia_picker: ^1.0.0
+flutter_multimedia_picker: ^1.0.2
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ You need user permission to access media.
 
   * ##### For Android: You must Add permission to `AndroidManifest.xml`
   ``` 
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />` to your `AndroidManifest.xml`
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   ```
 
 ## Example

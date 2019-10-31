@@ -1,6 +1,6 @@
 name: flutter_multimedia_picker
 description: Flutter plugin for selecting media file from the Android and iOS image library.
-version: 1.0.1
+version: 1.0.2
 author: Atri Technocrat <developers@atritechnocrat.com>
 homepage: https://github.com/Atri-Technocrat/flutter-picker
 
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  provider: 3.0.0+1
+  provider: ^3.1.0+1
 
 dev_dependencies:
   flutter_test:
