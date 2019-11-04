@@ -9,3 +9,7 @@
 ## 1.0.2
 
 * Full Example Added
+
+## 1.0.3
+
+* Swift Version Added
